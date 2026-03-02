@@ -21,11 +21,17 @@ describe("API Automation test suit", ()=>{
         cy.get("button[class='btn btn-primary']").click();
         
         // wait until the reference is solved
-        cy.wait('@getSingleBook');
+        cy.wait('@getSingleBook').then((res) => {
+            // assertion for the response status code
+            expect(res.response.statusCode).to.eq(200);
+
+            // assertion for the response body length +1 because of the header row in the table
+            cy.get('tr').should('have.length', res.response.body.length+1);
+        });
         cy.get('p').should('have.text', "Oops only 1 Book available");
     });
 
-    it.only("spy the API response", ()=>{
+    it("spy the API response", ()=>{
         cy.visit("https://rahulshettyacademy.com/angularAppdemo/");
         cy.intercept({
             method: 'GET',
@@ -34,15 +40,8 @@ describe("API Automation test suit", ()=>{
 
         cy.get("button[class='btn btn-primary']").click();
 
-        cy.wait(500000);
-
-        cy.wait('@getalltheBooks', {timeout: 100000}).should(({request, response}) => {
-            expect(request.method).to.eq('GET');
-            expect(response.statusCode).to.eq(200);
-        });
-
-        cy.wait('@getalltheBooks').then((interception) => {
-            expect(interception.response.statusCode).to.eq(200);
+        cy.wait('@getalltheBooks').then((res) => {
+            expect(res.response.statusCode).to.eq(200);
         });
     });
 });
