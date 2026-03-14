@@ -182,6 +182,5 @@
   },
   "devDependencies": {
     "cypress": "^15.11.0"
-  },
-  "keywords": []
+  }
 }

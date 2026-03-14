@@ -39,3 +39,4 @@ Cypress.Commands.add('Login', (username, password) => {
     // (cy.session may restore cookies but leave the test at about:blank), so navigate explicitly
     cy.visit('https://www.amazon.in/s?k=join+amazon+prime');
 });
+
