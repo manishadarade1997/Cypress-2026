@@ -10,5 +10,8 @@
   "description": "",
   "dependencies": {
     "cypress": "^15.11.0"
+  },
+  "devDependencies": {
+    "allure-cypress": "^3.6.0"
   }
 }

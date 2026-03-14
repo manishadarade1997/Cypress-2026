@@ -1,8 +1,9 @@
 /// < reference type = "Cypress">
 
 describe("Mock API Automation test suit", ()=>{
-    it("Stub - Mock the API response - replacing the real API response with a custom response", ()=>{
+    it.only("Stub - Mock the API response - replacing the real API response with a custom response", ()=>{
         cy.visit("https://rahulshettyacademy.com/angularAppdemo/");
+        cy.debug();
         
         cy.intercept({
             method : 'GET',
