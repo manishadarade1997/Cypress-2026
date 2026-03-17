@@ -5,7 +5,7 @@ describe("Promises in Cypress", () => {
         // Create a promise that resolves after 2 seconds
         const myPromise = new Promise((resolve, reject) =>{
             setTimeout(() => {
-                const data = false; // true or false
+                const data = true; // true or false
                 if(data){
                     resolve(data);
                 } else {

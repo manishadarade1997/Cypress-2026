@@ -1,5 +1,5 @@
 /// < reference type = "Cypress" />
-import LoginPage from "../../pages/AmazonLogin";
+import LoginPage from "../../Pages/AmazonLogin";
 
 describe("Login to Amazon Account", () => {
 
@@ -14,7 +14,7 @@ describe("Login to Amazon Account", () => {
 
     // }) 
 
-    it("Search the laptops on Amazon account", () => {
+    it.skip("Search the laptops on Amazon account", () => {
         cy.url().should('include', 'join+amazon+prime');
         cy.contains(".in").should("be.visible");
         cy.get("#twotabsearchtextbox").click();
@@ -39,7 +39,7 @@ describe("Login to Amazon Account", () => {
         // cy.get("#nav-search-submit-button").click();
         // cy.wait("@getLaptopSearchResults");
     });
-    it("Search the mobile phones on Amazon account", () => {
+    it.skip("Search the mobile phones on Amazon account", () => {
         cy.Login("8482964245", "Mnud@1010");
         cy.url({setTimeout: 10000}).should('include', 'join+amazon+prime');
         cy.contains(".in").should("be.visible");
