@@ -23,15 +23,12 @@ jobs :
             - name: Install dependencies
               run: rm -f package-lock.json && npm install
 
-            # - name: Run Eslint
-            #   run: node node_modules/eslint/bin/eslint.js .
-            
+            - name: Run Eslint
+              run: node node_modules/eslint/bin/eslint.js .
+
             - name: Run Cypress Tests
               uses: cypress-io/github-action@v6
               with:
-                start: npm start
-                wait-on: 'http://localhost:3000'
-                wait-on-timeout: 120
                 browser: chrome
 
             - name: Upload Cypress Artifacts
