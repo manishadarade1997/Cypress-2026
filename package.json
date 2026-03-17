@@ -15,6 +15,7 @@
     "cypress": "^15.11.0"
   },
   "devDependencies": {
-    "allure-cypress": "^3.6.0"
+    "allure-cypress": "^3.6.0",
+    "eslint": "^10.0.3"
   }
 }
