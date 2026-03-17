@@ -15,6 +15,9 @@ jobs :
             - name: Checkout code
               uses: actions/checkout@v4
 
+            - name: Remove BOM from package.json
+              run: sed -i 's/^\xef\xbb\xbf//' package.json
+
             - name: Set up Node.js
               uses: actions/setup-node@v4
               with:
