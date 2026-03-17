@@ -14,7 +14,7 @@ describe("Login to Amazon Account", () => {
 
     // }) 
 
-    it.skip("Search the laptops on Amazon account", () => {
+    it("Search the laptops on Amazon account", () => {
         cy.url().should('include', 'join+amazon+prime');
         cy.contains(".in").should("be.visible");
         cy.get("#twotabsearchtextbox").click();
