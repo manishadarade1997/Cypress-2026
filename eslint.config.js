@@ -1,8 +1,11 @@
 module.exports = [
   {
+    ignores: ['node_modules/**'],
+  },
+  {
     languageOptions: {
       ecmaVersion: 2021,
-      sourceType: 'commonjs',
+      sourceType: 'module',
       globals: {
         // Browser globals
         window: 'readonly',
