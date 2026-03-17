@@ -21,13 +21,10 @@ jobs :
                   node-version: '18'
 
             - name: Install dependencies
-              run: npm install
-
-            - name: Install ESLint
-              run: npm install eslint --save-dev
+              run: rm -f package-lock.json && npm install
 
             - name: Run Eslint
-              run: npx eslint -c eslint.config.js .
+              run: npx eslint .
             
             - name: Run Cypress Tests
               uses: cypress-io/github-action@v6
