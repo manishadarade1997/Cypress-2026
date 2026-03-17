@@ -1,21 +1,24 @@
-{
-    "name":  "cypress-2026",
-    "version":  "1.0.0",
-    "description":  "",
-    "main":  "index.js",
-    "scripts":  {
-                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
-                    "cypress:run":  "cypress run",
-                    "cypress:open":  "cypress open",
-                    "lint":  "eslint ."
-                },
-    "author":  "Manisha",
-    "license":  "ISC",
-    "dependencies":  {
-                         "cypress":  "^15.11.0"
-                     },
-    "devDependencies":  {
-                            "allure-cypress":  "^3.6.0",
-                            "eslint":  "^10.0.3"
-                        }
+﻿{
+  "name": "cypress-2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open",
+    "lint": "eslint ."
+  },
+  "author": "Manisha",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^15.11.0"
+  },
+  "devDependencies": {
+    "allure-cypress": "^3.6.0",
+    "eslint": "^10.0.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.3.0",
+    "mochawesome-report-generator": "^6.2.0"
+  }
 }
