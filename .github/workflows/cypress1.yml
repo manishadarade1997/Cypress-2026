@@ -1,0 +1,39 @@
+name : PR Quality Gate (Cypress Tests + Eslint)
+on :
+    pull_request:
+        branches:
+            - main
+jobs :
+    lint_and_test:
+        name: Eslint and Cypress Tests
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '18'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run Eslint
+              run: npm run lint
+            
+            - name: Run Cypress Tests
+              uses: cypress-io/github-action@v6
+              with:
+                start: npm start
+                wait-on: 'http://localhost:3000'
+                wait-on-timeout: 120
+                browser: chrome
+
+            - name: Upload Cypress Artifacts
+              if: failure()
+              uses: actions/upload-artifact@v4
+              with: 
+                name: cypress-artifacts
+                path: cypress/screenshots, cypress/videos
