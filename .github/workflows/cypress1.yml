@@ -1,42 +1,42 @@
-name : PR Quality Gate (Cypress Tests + Eslint)
-on :
-    pull_request:
-        branches:
-            - main
-    push:
-        branches:
-            - main
-jobs :
-    lint_and_test:
-        name: Eslint and Cypress Tests
-        runs-on: ubuntu-latest
+name : PR Quality Gate (Cypress Tests + Eslint) # Workflow name
+on : # Trigger the workflow on pull request and push events to the main branch
+    pull_request: # Trigger on pull request events
+        branches: # Specify the branches to trigger the workflow on pull request events
+            - main # trigger the workflow on pull requests to the main branch
+    push: # Trigger on push events
+        branches: # Specify the branches to trigger the workflow on push events
+            - main # trigger the workflow on push to the main branch
+jobs : # Define the jobs to run in the workflow
+    lint_and_test: # Job name
+        name: Eslint and Cypress Tests # name of the job
+        runs-on: ubuntu-latest # specify the operating system to run the job on
 
         steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+            - name: Checkout code # Step name
+              uses: actions/checkout@v4 # checkout the code from the repository
 
-            - name: Remove BOM from package.json
-              run: sed -i 's/^\xef\xbb\xbf//' package.json
+            - name: Remove BOM from package.json # Step name
+              run: sed -i 's/^\xef\xbb\xbf//' package.json # remove the unnecessary BOM character from package.json file
+            
+            - name: Set up Node.js # Step name
+              uses: actions/setup-node@v4 # why we are using setup-node action? to set up the Node.js environment for the workflow
+              with: # specify the Node.js version to use
+                  node-version: '20' # use Node.js version 20
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: '20'
+            - name: Install dependencies # Step name
+              run: rm -f package-lock.json && npm install # remove the package-lock.json file and install the dependencies using npm install command
 
-            - name: Install dependencies
-              run: rm -f package-lock.json && npm install
+            - name: Run Eslint # Step name
+              run: node node_modules/eslint/bin/eslint.js . # run the Eslint command to lint the code
 
-            - name: Run Eslint
-              run: node node_modules/eslint/bin/eslint.js .
+            - name: Run Cypress Tests # Step name
+              uses: cypress-io/github-action@v6 # use the cypress-io/github-action to run the Cypress tests
+              with: # specify the browser to run the tests on
+                browser: chrome # run the tests on Chrome browser
 
-            - name: Run Cypress Tests
-              uses: cypress-io/github-action@v6
-              with:
-                browser: chrome
-
-            - name: Upload Cypress Artifacts
-              if: failure()
-              uses: actions/upload-artifact@v4
-              with: 
-                name: cypress-artifacts
-                path: cypress/screenshots, cypress/videos
+            - name: Upload Cypress Artifacts # Step name
+              if: failure() # if the Cypress tests fail, upload the screenshots and videos as artifacts
+              uses: actions/upload-artifact@v4 # to upload the artifacts to the GitHub Actions workflow
+              with: # specify the name and path of the artifacts to upload
+                name: cypress-artifacts # name of the artifact to upload
+                path: cypress/screenshots, cypress/videos # path of the screenshots and videos to upload as artifacts
