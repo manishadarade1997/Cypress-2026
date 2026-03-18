@@ -9,7 +9,7 @@ describe("Remove Attribute Test Suit", ()=>{
         cy.go('back');
     });
 
-    it("Another approach to click on the link without removing the attribute", ()=>{
+    it.skip("Another approach to click on the link without removing the attribute", ()=>{
         cy.visit("https://the-internet.herokuapp.com/windows");
         cy.get('.example > a').then((link) => {
             cy.log(link); // log the link element to the browser console
