@@ -24,7 +24,7 @@ jobs : # Define the jobs to run in the workflow
                   node-version: '20' # use Node.js version 20
 
             - name: Install dependencies # Step name
-              run: rm -f package-lock.json && npm install # remove the package-lock.json file and install the dependencies using npm install command
+              run: npm ci # install the dependencies using npm ci command
 
             - name: Run Eslint # Step name
               run: node node_modules/eslint/bin/eslint.js . # run the Eslint command to lint the code
@@ -33,6 +33,10 @@ jobs : # Define the jobs to run in the workflow
               uses: cypress-io/github-action@v6 # use the cypress-io/github-action to run the Cypress tests
               with: # specify the browser to run the tests on
                 browser: chrome # run the tests on Chrome browser
+
+            - name: Execute Cypress Tests # Step name
+              run: npx cypress run # run the Cypress tests using npx cypress run command
+            
 
             - name: Upload Cypress Artifacts # Step name
               if: failure() # if the Cypress tests fail, upload the screenshots and videos as artifacts
