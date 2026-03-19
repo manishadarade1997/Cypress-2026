@@ -24,10 +24,12 @@ jobs : # Define the jobs to run in the workflow
                   node-version: '20' # use Node.js version 20
 
             - name: Install dependencies # Step name
-              run: npm ci # install the dependencies using npm ci command
+              run: |
+                npm ci # install the dependencies using npm ci command
+                npm install eslint --save-dev # Ensure eslint is installed
 
             - name: Run Eslint # Step name
-              run: node node_modules/eslint/bin/eslint.js . # run the Eslint command to lint the code
+              run: npx eslint . # run the Eslint command to lint the code
 
             - name: Run Cypress Tests # Step name
               uses: cypress-io/github-action@v6 # use the cypress-io/github-action to run the Cypress tests
