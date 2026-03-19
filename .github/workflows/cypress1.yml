@@ -31,14 +31,13 @@ jobs : # Define the jobs to run in the workflow
             - name: Run Eslint # Step name
               run: npx eslint . # run the Eslint command to lint the code
 
-            - name: Run Cypress Tests # this step will prepare the cypress environment and run the tests
-              uses: cypress-io/github-action@v6 # use the cypress-io/github-action to run the Cypress tests
-              with: # specify the browser to run the tests on
-                browser: chrome # run the tests on Chrome browser
+            # - name: Run Cypress Tests # this step will automatically installing Cypress, setting up the environment, and running the tests.
+            #   uses: cypress-io/github-action@v6 # use the cypress-io/github-action to run the Cypress tests
+            #   with: # specify the browser to run the tests on
+            #     browser: chrome # run the tests on Chrome browser
 
-            # - name: Execute Cypress Tests # Step name
-            #   run: npx cypress run # run the Cypress tests using npx cypress run command
-            
+            - name: Execute Cypress Tests # Step name
+              run: npx cypress run --browser chrome # run the Cypress tests using npx cypress run command with the specified browser
 
             - name: Upload Cypress Artifacts # Step name
               if: failure() # if the Cypress tests fail, upload the screenshots and videos as artifacts
