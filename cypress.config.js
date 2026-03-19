@@ -2,10 +2,17 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   allowCypressEnv: false,
+  video: true,
+  screenshotOnRunFailure: true,
   defaultCommandTimeout: 4000,
   pageLoadTimeout: 60000,
   requestTimeout: 5000,
   responseTimeout: 30000,
+  retries: {
+    runMode: 1,
+    openMode: 0,
+  },
+
   env: {
     base_url: "https://www.vimaansafar.com/portal/login.php",
     email: "manishadarade2014@gmail.com",

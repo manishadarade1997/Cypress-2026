@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "cypress": "^15.12.0",
+    "cypress-mochawesome-reporter": "^4.0.2",
     "eslint": "^10.0.3",
     "mochawesome": "^7.1.4"
   }
