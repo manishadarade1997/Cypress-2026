@@ -5,7 +5,7 @@ module.exports = defineConfig({
   video: true,
   screenshotOnRunFailure: true,
   defaultCommandTimeout: 4000,
-  pageLoadTimeout: 60000,
+  pageLoadTimeout: 600000,
   requestTimeout: 5000,
   responseTimeout: 30000,
   retries: {
@@ -21,6 +21,7 @@ module.exports = defineConfig({
 
 
   e2e: {
+    specPattern: "cypress/e2e/**/*.cy.{js,jsx,ts,tsx}",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },

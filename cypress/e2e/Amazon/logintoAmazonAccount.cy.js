@@ -1,20 +1,20 @@
 /// < reference type = "Cypress" />
-import LoginPage from "../../Pages/AmazonLogin";
+import LoginPage from "../../Pages/AmazonLogin.js";
 
 describe("Login to Amazon Account", () => {
 
     // Clear cookies before each test to ensure a clean state
     // Login to amazon account
-    // beforeEach(() =>{
-    //     cy.clearCookies();
-    //     LoginPage.visit();
-    //     LoginPage.username("8482964245");
-    //     LoginPage.password("Mnud@1010");
-    //     LoginPage.submit();
+    beforeEach(() =>{
+        cy.clearCookies();
+        LoginPage.visit();
+        LoginPage.username("8482964245");
+        LoginPage.password("Mnud@1010");
+        LoginPage.submit();
 
-    // }) 
+    }) 
 
-    it.skip("Search the laptops on Amazon account", () => {
+    it("Search the laptops on Amazon account", () => {
         cy.url().should('include', 'join+amazon+prime');
         cy.contains(".in").should("be.visible");
         cy.get("#twotabsearchtextbox").click();
@@ -39,8 +39,8 @@ describe("Login to Amazon Account", () => {
         // cy.get("#nav-search-submit-button").click();
         // cy.wait("@getLaptopSearchResults");
     });
-    it.skip("Search the mobile phones on Amazon account", () => {
-        cy.Login("8482964245", "Mnud@1010");
+    it("Search the mobile phones on Amazon account", () => {
+        LoginPage.visit();
         cy.url({setTimeout: 10000}).should('include', 'join+amazon+prime');
         cy.contains(".in").should("be.visible");
         cy.get("#twotabsearchtextbox").click();

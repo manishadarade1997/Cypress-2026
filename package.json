@@ -15,12 +15,35 @@
   "type": "commonjs",
   "main": "cypress.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "headedTests": "npx cypress run --headed",
+    "openTests": "npx cypress open",
+    "chromeTest": "npx cypress run --browser chrome",
+    "SmokeTest": "npx cypress run --spec 'cypress/e2e/ecomm/fixture_Example.cy.js'",
+    "recordDashboardTest": "npx cypress run --record --key 9b1c8e5a-7c3d-4f0b-9e5a-2f1c8e5a7c3d"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "reporters": [
+      "default",
+      [
+        "jest-html-reporter",
+        {
+          "pageTitle": "Test Report",
+          "outputPath": "test-report.html"
+        }
+      ]
+    ]
   },
   "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
     "cypress": "^15.12.0",
-    "cypress-mochawesome-reporter": "^4.0.2",
+    "cypress-iframe": "^1.0.1",
     "eslint": "^10.0.3",
-    "mochawesome": "^7.1.4"
+    "jest": "^30.3.0",
+    "jest-html-reporter": "^4.4.0"
+  },
+  "resolutions": {
+    "serialize-javascript": "7.0.5"
   }
 }
