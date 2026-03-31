@@ -10,7 +10,7 @@ describe("File Operations - Read and Write", () => {
     });
 
     it("read from a file", () => {
-        cy.readFile('cypress/fixture/user.json').then((user)=>{
+        cy.readFile('cypress/fixtures/user.json').then((user)=>{
             expect(user).to.have.property('name', 'Manisha');
             expect(user.email).to.equal('manisha@example.com');
             expect(user.phoneno).to.match(/^\d{9}$/);
