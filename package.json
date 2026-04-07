@@ -20,7 +20,10 @@
     "openTests": "npx cypress open",
     "chromeTest": "npx cypress run --browser chrome",
     "SmokeTest": "npx cypress run --spec 'cypress/e2e/ecomm/fixture_Example.cy.js'",
-    "recordDashboardTest": "npx cypress run --record --key 9b1c8e5a-7c3d-4f0b-9e5a-2f1c8e5a7c3d"
+    "recordDashboardTest": "npx cypress run --record --key 9b1c8e5a-7c3d-4f0b-9e5a-2f1c8e5a7c3d",
+    "cucumber": "npx cypress run --spec 'cypress/e2e/BDD/**/*.feature'",
+    "cucumber:chrome": "npx cypress run --spec 'cypress/e2e/BDD/**/*.feature' --browser chrome",
+    "cucumber:headed": "npx cypress run --spec 'cypress/e2e/BDD/**/*.feature' --headed"
   },
   "jest": {
     "testEnvironment": "node",
@@ -35,13 +38,21 @@
       ]
     ]
   },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/CucumberReports/results.json"
+    }
+  },
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^24.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.8",
     "cypress": "^15.12.0",
     "cypress-iframe": "^1.0.1",
     "eslint": "^10.0.3",
     "jest": "^30.3.0",
-    "jest-html-reporter": "^4.4.0"
+    "jest-html-reporter": "^4.4.0",
+    "multiple-cucumber-html-reporter": "^3.10.0"
   },
   "resolutions": {
     "serialize-javascript": "7.0.5"
